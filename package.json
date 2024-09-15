@@ -1,9 +1,9 @@
 {
 	"scripts": {
-    	"start": "ts-node-dev src/index.ts",
-		"build": "tsc",
-		"deploy": "npm run build && node dist/index.js"
-  	},
+		"start": "ts-node-dev src/index.ts",
+		"build": "esbuild src/index.ts --bundle --minify --platform=node --outfile=dist/index.js --platform=node --target=es2020 --legal-comments=none",
+		"start-prod": "node ./dist/index.js"
+	},
 	"dependencies": {
 		"@types/express": "^4.17.21",
 		"@types/node": "^22.5.5",
@@ -12,6 +12,7 @@
 		"typescript": "^5.6.2"
 	},
 	"devDependencies": {
+		"esbuild": "^0.23.1",
 		"nodemon": "^3.1.4",
 		"ts-node-dev": "^2.0.0"
 	}

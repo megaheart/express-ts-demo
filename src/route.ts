@@ -1,4 +1,10 @@
 import type { Express } from 'express';
+import type { Request, Response, NextFunction } from 'express';
+
+export function logRequest(req: Request, res: Response, next: NextFunction) {
+    console.log(`[${new Date().toISOString()}] <${req.method}> ${req.url}: ${JSON.stringify(req.params)}`);
+    next();
+}
 
 export function configRoutes(app: Express) {
     app.get('/', (req, res) => {

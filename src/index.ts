@@ -1,9 +1,10 @@
 import express from 'express';
-import { configRoutes } from './route';
+import { configRoutes, logRequest } from './route';
 
 const app = express();
 const port = process.env.WEB_PORT || 3000;
 
+app.use(logRequest);
 configRoutes(app);
 
 app.listen(port, () => {
